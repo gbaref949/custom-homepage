@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import {FaAngleDoubleRight} from 'react-icons/fa'
 
-// const url = 'https://' api
+const url = 'https://course-api.com/react-tabs-project'
 
 const Design = () => {
     const [loading, setLoading] = useState(true)
