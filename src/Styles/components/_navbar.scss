@@ -1,0 +1,107 @@
+@use '../themes/defaultTheme' as *;
+@use '../util/variables' as *;
+@use '../util/mixins' as *;
+.navbar {
+  background: $white;
+  box-shadow: $light-shadow;
+
+  .nav-center {
+    .nav-header {
+      @include flex-center;
+      justify-content: space-between;
+      padding: 0.5rem;
+    }
+    .nav-toggle {
+      font-size: 1.5rem;
+      color: $primary-4;
+      background: transparent;
+      border-color: transparent;
+      transition: $transition;
+      cursor: pointer;
+      &:hover {
+        transform: rotate(90deg);
+      }
+    }
+    .logo {
+      height: 30px;
+    }
+    .links-container {
+      height: 0px;
+      overflow: hidden;
+      transition: $transition;
+    }
+    .show.links-container {
+      height: auto;
+    }
+    .links li {
+      color: $grey-2;
+      font-size: 1rem;
+      text-transform: capitalize;
+      letter-spacing: $spacing;
+      display: block;
+      padding: 0.5rem 1rem;
+      transition: $transition;
+      &:hover {
+        background: $primary-8;
+        color: $primary-4;
+        padding-left: 1.5rem;
+      }
+    }
+    // .links-container
+
+    .social-icons {
+      // display: none;
+      display: flex;
+      li {
+        margin: 0 1rem;
+      }
+    }
+  }
+}
+@include tablet {
+  .navbar {
+    .nav-center {
+      max-width: 1200px;
+      @include center-auto;
+      @include flex-center;
+      justify-content: space-between;
+      padding: 1rem;
+
+      .logo {
+        height: 40px;
+      }
+      .nav-header {
+        padding: 0;
+      }
+      .nav-toggle {
+        display: none;
+      }
+      .links-container {
+        height: auto;
+      }
+      .links {
+        display: flex;
+        li {
+          padding: 0;
+          margin: 0 1rem;
+          &:hover {
+            padding: 0;
+            padding-left: 0;
+            background: transparent;
+          }
+        }
+      }
+      .social-icons {
+        display: flex;
+        a {
+          margin: 0 0.5rem;
+          color: $primary-4;
+          transition: $transition;
+          &:hover {
+            color: $primary-7;
+          }
+        }
+      }
+    }
+  }
+}
