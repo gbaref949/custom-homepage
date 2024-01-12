@@ -6,11 +6,13 @@ const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [searchHistory, setSearchHistory] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   //this is the input function
   const handleInputChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
+
   };
 
   //this is the function that will be called when the user types into the search bar and searches
@@ -18,7 +20,6 @@ const Search = () => {
     e.preventDefault();
     const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
     window.open(searchUrl, '_blank');
-
     //updates the search history
     setSearchHistory((prevHistory) => {
       const newHistory = [...prevHistory, searchTerm];
@@ -56,7 +57,7 @@ const Search = () => {
         setSuggestions([]);
       }
     };
-
+    setLoading(false)
     fetchData();//get data
 
     //loads the search history from local storage
@@ -68,7 +69,7 @@ const Search = () => {
 
   if(loading){
         return(
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><linearGradient id="a7"><stop offset="0" stop-color="#FF156D" stop-opacity="0"></stop><stop offset="1" stop-color="#FF156D"></stop></linearGradient><circle fill="none" stroke="url(#a7)" stroke-width="15" stroke-linecap="round" stroke-dasharray="0 44 0 44 0 44 0 44 0 360" cx="100" cy="100" r="70" transform-origin="center"><animateTransform type="rotate" attributeName="transform" calcMode="discrete" dur="2" values="360;324;288;252;216;180;144;108;72;36" repeatCount="indefinite"></animateTransform></circle></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><linearGradient id="a7"><stop offset="0" stop-color="#17172B" stop-opacity="0"></stop><stop offset="1" stop-color="#17172B"></stop></linearGradient><circle fill="none" stroke="url(#a7)" stroke-width="15" stroke-linecap="round" stroke-dasharray="0 44 0 44 0 44 0 44 0 360" cx="100" cy="100" r="70" transform-origin="center"><animateTransform type="rotate" attributeName="transform" calcMode="discrete" dur="2" values="360;324;288;252;216;180;144;108;72;36" repeatCount="indefinite"></animateTransform></circle></svg>
         )
     }
 
