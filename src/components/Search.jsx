@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'; //necessary imports
+import { IoIosSearch } from "react-icons/io";
 
 const Search = () => {
   //the var I used for the search, autocomplete, and search history
@@ -30,7 +31,7 @@ const Search = () => {
   const fetchSuggestions = useCallback(async () => {
     try {
       const response = await fetch(
-        `https://suggestqueries.google.com/complete/search?output=json&client=firefox&q=${searchTerm}`
+        `http://suggestqueries.google.com/complete/search?client=firefox&q=YOURQUERY${searchTerm}`
       );
       const [suggestedTerms] = await response.json();
       setSuggestions(suggestedTerms);
@@ -65,11 +66,18 @@ const Search = () => {
     }
   }, [searchTerm, fetchSuggestions]);
 
+  if(loading){
+        return(
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><linearGradient id="a7"><stop offset="0" stop-color="#FF156D" stop-opacity="0"></stop><stop offset="1" stop-color="#FF156D"></stop></linearGradient><circle fill="none" stroke="url(#a7)" stroke-width="15" stroke-linecap="round" stroke-dasharray="0 44 0 44 0 44 0 44 0 360" cx="100" cy="100" r="70" transform-origin="center"><animateTransform type="rotate" attributeName="transform" calcMode="discrete" dur="2" values="360;324;288;252;216;180;144;108;72;36" repeatCount="indefinite"></animateTransform></circle></svg>
+        )
+    }
+
   return (
     <div style={{ border: '1px solid #ccc', padding: '1rem', margin: '1rem' }}>
       <label htmlFor='searchInput'>Google Search</label>
       <br />
       <form onSubmit={handleSearch}>
+        <IoIosSearch />
         <input
           type='text'
           id='searchInput'
@@ -91,7 +99,7 @@ const Search = () => {
 
       {searchHistory.length > 0 && (
         <div>
-          <h6 style={{margin: '1.5 rem'}}>recent searches</h6>
+          <h4 style={{margin: '1.5 rem'}}>Recent Searches</h4>
           <ul>
             {searchHistory.map((historyItem, index) => (
               <li key={index}>{historyItem}</li>
