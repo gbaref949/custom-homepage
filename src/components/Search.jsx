@@ -1,5 +1,6 @@
 import {useState} from 'react'
-
+import { IoIosSearch } from "react-icons/io";
+mlnll
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -20,6 +21,7 @@ const Search = () => {
       <label htmlFor='searchInput'>Google Search</label>
       <br />
       <form onSubmit={handleSearch}>
+        <IoIosSearch />
         <input
           type='text'
           id='searchInput'
@@ -28,7 +30,7 @@ const Search = () => {
           value={searchTerm}
           onChange={handleInputChange}
         />
-        <button type='submit'>Search</button>
+        <button type='submit' className='btn'>Search</button>
       </form>
     </div>
   );
