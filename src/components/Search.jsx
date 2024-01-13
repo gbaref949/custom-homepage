@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from 'react'; //necessary imports
-import { IoIosSearch } from "react-icons/io";
 
 const Search = () => {
   //the var I used for the search, autocomplete, and search history
@@ -74,11 +73,10 @@ const Search = () => {
     }
 
   return (
-    <div style={{ border: '1px solid #ccc', padding: '1rem', margin: '1rem' }}>
+    <div>
       <label htmlFor='searchInput'>Google Search</label>
       <br />
       <form onSubmit={handleSearch}>
-        <IoIosSearch />
         <input
           type='text'
           id='searchInput'
