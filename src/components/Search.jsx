@@ -77,12 +77,10 @@ const Search = () => {
 
   return (
     <div className='search-container'>
-      <label htmlFor='searchInput' className='visually-hidden'>
-        Google Search
-      </label>
+      <label htmlFor='searchInput' style={{textAlign:'center'}}>Google</label>
       <form onSubmit={handleSearch} className='search-form'>
         <div className='search-input-container'>
-          <FaSearch className='search-icon' />
+          <FaSearch size='4rem'  className='search-icon' />
           <input
             type='text'
             id='searchInput'
@@ -92,10 +90,10 @@ const Search = () => {
             onChange={handleInputChange}
             className='search-input'
           />
+          <button type='submit' className='search-button'>
+            Search
+          </button>
         </div>
-        <button type='submit' className='search-button'>
-          Search
-        </button>
       </form>
 
       {searchHistory.length > 0 && (
@@ -103,13 +101,17 @@ const Search = () => {
           <h4 className='search-history-title'>Recent Searches</h4>
           <ul className='search-history-list'>
             {searchHistory.map((historyItem, index) => (
-              <FaHistory key={index} className='search-history-item'>
+              <FaHistory
+                size='25rem'
+                key={index}
+                className='search-history-item'
+              >
                 {historyItem}
               </FaHistory>
             ))}
           </ul>
           <button onClick={clearSearchHistory} className='clear-history-button'>
-            <FaTrash className='clear-history-icon' />
+            <FaTrash className='clear-history-icon' size='25rem' />
             Clear History
           </button>
         </div>
