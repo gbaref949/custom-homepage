@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'; //necessary imports
-import { FaSearch, FaHistory, FaTrash } from 'react-icons/fa'; // Import icons from react-icons library
-
+import { FaSearch, FaHistory, FaTrash } from 'react-icons/fa';//import icons from react-icons library
+import { MdClear } from 'react-icons/md';
 const Search = () => {
   //the var I used for the search, autocomplete, and search history
   const [searchTerm, setSearchTerm] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   //this is the input function
   const handleInputChange = (e) => {
@@ -16,10 +16,9 @@ const Search = () => {
   //this is the function that will be called when the user types into the search bar and searches
   const handleSearch = (e) => {
     e.preventDefault();
-    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(
-      searchTerm
-    )}`;
+    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
     window.open(searchUrl, '_blank');
+
     //updates the search history
     setSearchHistory((prevHistory) => {
       const newHistory = [...prevHistory, searchTerm];
@@ -36,7 +35,7 @@ const Search = () => {
   };
 
   useEffect(() => {
-    setLoading(false);
+    // setLoading(false);
 
     const storedHistory = localStorage.getItem('searchHistory');
     if (storedHistory) {
@@ -44,43 +43,20 @@ const Search = () => {
     }
   }, [searchTerm]);
 
-  if (loading) {
-    return (
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'>
-        <linearGradient id='a7'>
-          <stop offset='0' stop-color='#17172B' stop-opacity='0'></stop>
-          <stop offset='1' stop-color='#17172B'></stop>
-        </linearGradient>
-        <circle
-          fill='none'
-          stroke='url(#a7)'
-          stroke-width='15'
-          stroke-linecap='round'
-          stroke-dasharray='0 44 0 44 0 44 0 44 0 360'
-          cx='100'
-          cy='100'
-          r='70'
-          transform-origin='center'
-        >
-          <animateTransform
-            type='rotate'
-            attributeName='transform'
-            calcMode='discrete'
-            dur='2'
-            values='360;324;288;252;216;180;144;108;72;36'
-            repeatCount='indefinite'
-          ></animateTransform>
-        </circle>
-      </svg>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><linearGradient id="a7"><stop offset="0" stop-color="#e7172B" stop-opacity="0"></stop><stop offset="1" stop-color="#e7172B"></stop></linearGradient><circle fill="none" stroke="url(#a7)" stroke-width="15" stroke-linecap="round" stroke-dasharray="0 44 0 44 0 44 0 44 0 360" cx="100" cy="100" r="70" transform-origin="center"><animateTransform type="rotate" attributeName="transform" calcMode="discrete" dur="2" values="360;324;288;252;216;180;144;108;72;36" repeatCount="indefinite"></animateTransform></circle></svg>
+  //   );
+  // }
 
   return (
     <div className='search-container'>
-      <label htmlFor='searchInput' style={{textAlign:'center'}}>Google</label>
+      <label htmlFor='searchInput' className='title'>
+        Google
+      </label>
       <form onSubmit={handleSearch} className='search-form'>
         <div className='search-input-container'>
-          <FaSearch size='4rem'  className='search-icon' />
+          <FaSearch size='3.5rem' color='grey' className='search-icon' />
           <input
             type='text'
             id='searchInput'
@@ -89,7 +65,9 @@ const Search = () => {
             value={searchTerm}
             onChange={handleInputChange}
             className='search-input'
+            placeholder='Type To Search...'
           />
+          <MdClear size='3.5rem' color='grey' className='search-clear' />
           <button type='submit' className='search-button'>
             Search
           </button>
@@ -99,20 +77,15 @@ const Search = () => {
       {searchHistory.length > 0 && (
         <div className='search-history-container'>
           <h4 className='search-history-title'>Recent Searches</h4>
-          <ul className='search-history-list'>
-            {searchHistory.map((historyItem, index) => (
-              <FaHistory
-                size='25rem'
-                key={index}
-                className='search-history-item'
-              >
-                {historyItem}
-              </FaHistory>
-            ))}
-          </ul>
+          <FaHistory size={'3rem'}>
+            <ul className='search-history-list'>
+              {searchHistory.map((historyItem, index) => (
+                <li key={index}>{historyItem}</li>
+              ))}
+            </ul>
+          </FaHistory>
           <button onClick={clearSearchHistory} className='clear-history-button'>
-            <FaTrash className='clear-history-icon' size='25rem' />
-            Clear History
+            <FaTrash className='clear-history-icon' size='4rem' />
           </button>
         </div>
       )}
