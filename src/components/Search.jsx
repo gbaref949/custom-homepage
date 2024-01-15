@@ -26,6 +26,7 @@ const Search = () => {
   //this is the function that will be called when the user types into the search bar and searches
   const handleSearch = (e) => {
     e.preventDefault();
+
     const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(
       searchTerm
     )}`;
@@ -38,11 +39,11 @@ const Search = () => {
       return newHistory;
     });
 
-    setSearchTerm(''); //adds back to the input
+    setSearchTerm(''); //clears whjat's left
   };
 
   const clearSearchTerm = () => {
-    setSearchTerm(''); //researches the previous search
+    setSearchTerm('');//clears the search input field
   };
 
   const handleSearchHistoryClick = (historyItem) => {
@@ -58,7 +59,6 @@ const Search = () => {
   //noticed that the user may want the ability to clear search history so I added this function
   const clearSearchHistory = () => {
     //clear search history in state and local storage
-    setSearchTerm('');
     setSearchHistory([]);
     localStorage.removeItem('searchHistory'); //forgot to mention the searches is saved on the user's local storage
   };
@@ -69,7 +69,6 @@ const Search = () => {
     updatedHistory.splice(indexToRemove, 1);
 
     //update state and local storage
-    setSearchTerm('');
     setSearchHistory(updatedHistory);
     localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
   };
@@ -79,7 +78,7 @@ const Search = () => {
     if (storedHistory) {
       setSearchHistory(JSON.parse(storedHistory));
     }
-  }, [searchTerm]);
+  },[searchTerm]);
 
   return (
     <div className='container'>
@@ -104,6 +103,9 @@ const Search = () => {
               onChange={handleInputChange}
               className='search-input'
               placeholder='Type To Search...'
+              onKeyPress={(e) => {
+                e.key === 'Enter' && e.preventDefault();
+              }}
               autoComplete='off'
             />
             {searchTerm && searchHistory.length > 0 && (
@@ -149,7 +151,7 @@ const Search = () => {
               className='search-clear'
               onClick={clearSearchTerm}
             />
-            <button type='submit' className='search-button'>
+            <button id='searchButton' type='submit' className='search-button'>
               Search
             </button>
             <div className='quick-links'>

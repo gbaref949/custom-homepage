@@ -137,6 +137,7 @@ img:nth-of-type(6) {
   border: 0;
   background-color: transparent;
   color: #fff;
+  width: calc(100% - 2rem);
 }
 
 .search-input input::placeholder{
@@ -193,7 +194,7 @@ img:nth-of-type(6) {
 }
 
 .quick-links a:hover {
-  background-color: #3a77cc;
+  background-color: #b8b8b8;
 }
 
 .search-history{
