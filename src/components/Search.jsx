@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'; //necessary imports
-import { FaSearch, FaHistory, FaTrash } from 'react-icons/fa';//import icons from react-icons library
+import { FaSearch, FaTrash } from 'react-icons/fa'; //import icons from react-icons library
+import { CiCircleRemove } from 'react-icons/ci';
+import { BiHistory } from 'react-icons/bi';
 import { MdClear } from 'react-icons/md';
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+
 import bckg from '../images/bckg.jpeg';
 import bckg1 from '../images/bckg1.jpeg';
 import bckg2 from '../images/bckg2.jpeg';
@@ -8,12 +12,10 @@ import bckg3 from '../images/bckg3.jpeg';
 import bckg4 from '../images/bckg4.jpeg';
 import bckg5 from '../images/bckg5.jpeg';
 
-
 const Search = () => {
   //the var I used for the search, autocomplete, and search history
   const [searchTerm, setSearchTerm] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
-  // const [loading, setLoading] = useState(true);
 
   //this is the input function
   const handleInputChange = (e) => {
@@ -24,7 +26,9 @@ const Search = () => {
   //this is the function that will be called when the user types into the search bar and searches
   const handleSearch = (e) => {
     e.preventDefault();
-    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
+    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(
+      searchTerm
+    )}`;
     window.open(searchUrl, '_blank');
 
     //updates the search history
@@ -33,80 +37,146 @@ const Search = () => {
       localStorage.setItem('searchHistory', JSON.stringify(newHistory));
       return newHistory;
     });
+
+    setSearchTerm(''); //adds back to the input
+  };
+
+  const clearSearchTerm = () => {
+    setSearchTerm(''); //researches the previous search
+  };
+
+  const handleSearchHistoryClick = (historyItem) => {
+    setSearchTerm(historyItem);
+
+    //perform the search
+    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(
+      historyItem
+    )}`;
+    window.open(searchUrl, '_blank');
   };
 
   //noticed that the user may want the ability to clear search history so I added this function
   const clearSearchHistory = () => {
-    // Clear search history in state and local storage
+    //clear search history in state and local storage
+    setSearchTerm('');
     setSearchHistory([]);
     localStorage.removeItem('searchHistory'); //forgot to mention the searches is saved on the user's local storage
   };
 
-  useEffect(() => {
-    // setLoading(false);
+  const clearOneSearchHistory = (indexToRemove) => {
+    //remove the specified item from search history
+    const updatedHistory = [...searchHistory];
+    updatedHistory.splice(indexToRemove, 1);
 
+    //update state and local storage
+    setSearchTerm('');
+    setSearchHistory(updatedHistory);
+    localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
+  };
+
+  useEffect(() => {
     const storedHistory = localStorage.getItem('searchHistory');
     if (storedHistory) {
       setSearchHistory(JSON.parse(storedHistory));
     }
   }, [searchTerm]);
 
-  // if (loading) {
-  //   return (
-  //     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><linearGradient id="a7"><stop offset="0" stop-color="#17172B" stop-opacity="0"></stop><stop offset="1" stop-color="#17172B"></stop></linearGradient><circle fill="none" stroke="url(#a7)" stroke-width="15" stroke-linecap="round" stroke-dasharray="0 44 0 44 0 44 0 44 0 360" cx="100" cy="100" r="70" transform-origin="center"><animateTransform type="rotate" attributeName="transform" calcMode="discrete" dur="2" values="360;324;288;252;216;180;144;108;72;36" repeatCount="indefinite"></animateTransform></circle></svg>
-  //   );
-  // }
-
   return (
     <div className='container'>
-    <div className="overlay" />
-      <img src={bckg} alt='zero background' />
-      <img src={bckg1} alt='first background' />
-      <img src={bckg2} alt='second background' />
-      <img src={bckg3} alt='third background' />
-      <img src={bckg4} alt='fourth background' />
-      <img src={bckg5} alt='fifth background' />
-
+      <div className='image-slider'>
+        <img src={bckg} alt='zero background' className='overlay' />
+        <img src={bckg1} alt='first background' className='overlay' />
+        <img src={bckg2} alt='second background' className='overlay' />
+        <img src={bckg3} alt='third background' className='overlay' />
+        <img src={bckg4} alt='fourth background' className='overlay' />
+        <img src={bckg5} alt='fifth background' className='overlay' />
+      </div>
       <div className='search-container'>
         <h1 className='title'>Google</h1>
         <form onSubmit={handleSearch} className='search-form'>
           <div className='search-input-container'>
-            <FaSearch size='2.5rem' color='grey' className='search-icon' />
+            <FaSearch size='2rem' color='#969697' className='search-icon' />
             <input
               type='text'
               id='searchInput'
               name='searchInput'
-              maxLength={255}
-              width={''}
               value={searchTerm}
               onChange={handleInputChange}
               className='search-input'
               placeholder='Type To Search...'
+              autoComplete='off'
             />
-            <MdClear size='2.5rem' color='grey' className='search-clear' />
+            {searchTerm && searchHistory.length > 0 && (
+              <div className='search-history-container'>
+                <ul>
+                  {searchHistory.map((historyItem, index) => (
+                    <li
+                      key={index}
+                      className='search-history-item'
+                      onClick={() => handleSearchHistoryClick(historyItem)}
+                    >
+                      <BiHistory
+                        size={'1.75rem'}
+                        color='#969697'
+                        className='search-history'
+                      />
+                      {historyItem}
+                      <MdClear
+                        size={'1.75rem'}
+                        className='i-search-clear'
+                        color='#969697 '
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent the click from reaching the parent li
+                          clearOneSearchHistory(index);
+                        }}
+                        title='clear one item'
+                      />
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  onClick={clearSearchHistory}
+                  className='clear-history-button'
+                  title='clear all items'
+                >
+                  <FaTrash className='clear-history-icon' size='1.5rem' />
+                </button>
+              </div>
+            )}
+            <CiCircleRemove
+              size='2.5rem'
+              color='#969697'
+              className='search-clear'
+              onClick={clearSearchTerm}
+            />
             <button type='submit' className='search-button'>
               Search
             </button>
+            <div className='quick-links'>
+              <a
+                href='https://github.com'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <FaGithub size='2.5rem' color='black' />
+              </a>
+              <a
+                href='https://linkedin.com'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <FaLinkedin size='2.5rem' color='#3a77cc' />
+              </a>
+              <a
+                href='https://instagram.com'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <FaInstagram size='2.5rem' color='purple' />
+              </a>
+            </div>
           </div>
         </form>
-        {searchHistory.length > 0 && (
-          <div className='search-history-container'>
-            <h4 className='search-history-title'>Recent Searches</h4>
-            {/* <FaHistory size={'3rem'}> */}
-            <ul className='search-history-list'>
-              {searchHistory.map((historyItem, index) => (
-                <li key={index}>{historyItem}</li>
-              ))}
-            </ul>
-            {/* </FaHistory> */}
-            <button
-              onClick={clearSearchHistory}
-              className='clear-history-button'
-            >
-              <FaTrash className='clear-history-icon' size='2rem' />
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );
