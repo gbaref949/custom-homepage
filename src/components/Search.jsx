@@ -68,9 +68,7 @@ const Search = () => {
       <img src={bckg5} alt='fifth background' />
 
       <div className='search-container'>
-        <label htmlFor='searchInput' className='title'>
-          Google
-        </label>
+        <h1 className='title'>Google</h1>
         <form onSubmit={handleSearch} className='search-form'>
           <div className='search-input-container'>
             <FaSearch size='2.5rem' color='grey' className='search-icon' />
@@ -91,7 +89,6 @@ const Search = () => {
             </button>
           </div>
         </form>
-
         {searchHistory.length > 0 && (
           <div className='search-history-container'>
             <h4 className='search-history-title'>Recent Searches</h4>
