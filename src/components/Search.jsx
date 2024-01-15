@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'; //necessary imports
 import { FaSearch, FaHistory, FaTrash } from 'react-icons/fa';//import icons from react-icons library
 import { MdClear } from 'react-icons/md';
-import bckg from '../images/bckg.png';
-import bckg1 from '../images/bckg(1).png';
-import bckg2 from '../images/bckg(2).png';
-import bckg3 from '../images/bckg(3).png';
-import bckg4 from '../images/bckg(4).png';
-import bckg5 from '../images/bckg(5).png';
+import bckg from '../images/bckg.jpeg';
+import bckg1 from '../images/bckg1.jpeg';
+import bckg2 from '../images/bckg2.jpeg';
+import bckg3 from '../images/bckg3.jpeg';
+import bckg4 from '../images/bckg4.jpeg';
+import bckg5 from '../images/bckg5.jpeg';
 
 
 const Search = () => {
@@ -59,6 +59,7 @@ const Search = () => {
 
   return (
     <div className='container'>
+    <div className="overlay" />
       <img src={bckg} alt='zero background' />
       <img src={bckg1} alt='first background' />
       <img src={bckg2} alt='second background' />
@@ -72,18 +73,19 @@ const Search = () => {
         </label>
         <form onSubmit={handleSearch} className='search-form'>
           <div className='search-input-container'>
-            <FaSearch size='3.5rem' color='grey' className='search-icon' />
+            <FaSearch size='2.5rem' color='grey' className='search-icon' />
             <input
               type='text'
               id='searchInput'
               name='searchInput'
               maxLength={255}
+              width={''}
               value={searchTerm}
               onChange={handleInputChange}
               className='search-input'
               placeholder='Type To Search...'
             />
-            <MdClear size='3.5rem' color='grey' className='search-clear' />
+            <MdClear size='2.5rem' color='grey' className='search-clear' />
             <button type='submit' className='search-button'>
               Search
             </button>
@@ -104,7 +106,7 @@ const Search = () => {
               onClick={clearSearchHistory}
               className='clear-history-button'
             >
-              <FaTrash className='clear-history-icon' size='4rem' />
+              <FaTrash className='clear-history-icon' size='2rem' />
             </button>
           </div>
         )}

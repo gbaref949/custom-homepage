@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Burned&display=swap');
 
 * {
-  margin: 1rem;
-  padding: 1rem;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -11,9 +11,9 @@
 }
 
 body {
-  background-color: #000022;
-
   background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,9 +23,68 @@ body {
   color: white;
 }
 
-/* .container{
+.container{
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
 
-} */
+.overlay{
+  background-color:rgba(0,0,0,0.3);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+@keyframes fade {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  16.666%,
+  83.333% {
+    opacity: 0;
+  }
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: fade 30s ease-in-out infinite;
+}
+
+img:nth-of-type(1) {
+  animation-delay: 0s;
+}
+
+img:nth-of-type(2) {
+  animation-delay: 5s;
+}
+
+img:nth-of-type(3) {
+  animation-delay: 10s;
+}
+
+img:nth-of-type(4) {
+  animation-delay: 15s;
+}
+
+img:nth-of-type(5) {
+  animation-delay: 20s;
+}
+
+img:nth-of-type(6) {
+  animation-delay: 25s;
+}
 
 .search-container {
   max-width: 400px;
@@ -79,7 +138,7 @@ body {
 
 .search-button {
   position: relative;
-  left: -13rem;
+  left: -8rem;
   background-color: #4285f4;
   color: white;
   border: none;
