@@ -77,13 +77,13 @@ const Search = () => {
       {searchHistory.length > 0 && (
         <div className='search-history-container'>
           <h4 className='search-history-title'>Recent Searches</h4>
-          <FaHistory size={'3rem'}>
+          {/* <FaHistory size={'3rem'}> */}
             <ul className='search-history-list'>
               {searchHistory.map((historyItem, index) => (
                 <li key={index}>{historyItem}</li>
               ))}
             </ul>
-          </FaHistory>
+          {/* </FaHistory> */}
           <button onClick={clearSearchHistory} className='clear-history-button'>
             <FaTrash className='clear-history-icon' size='4rem' />
           </button>

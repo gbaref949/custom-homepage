@@ -54,21 +54,21 @@ body {
   padding: 5px;
 }
 
-.search-icon{
+/* .search-icon{
   position: relative;
   left: 6rem;
-}
+} */
 
-.search-clear{
+/* .search-clear{
   position: relative;
   left: -11rem;
-}
+} */
 
 .search-input {
   border: none;
   outline: none;
   height: 3.5rem;
-  width: 50rem;
+  /* width: 50rem; */
   border-radius: 5px;
   flex: 1;
 }
