@@ -256,3 +256,14 @@ img:nth-of-type(6) {
   bottom: 14px;
   left: 95.6%;
 }
+
+.menu{
+  width: 700px;
+  height: 250px;
+  margin: 0 auto;
+  position: fixed;
+  top: 75%;
+  left: 50.05%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+}
