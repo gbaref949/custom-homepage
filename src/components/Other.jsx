@@ -1,7 +1,7 @@
 
 const Other = () => {
   return (
-    <div className="div">
+    <div className="adiv menu">
       <details open>
         <summary>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, autem!</summary>
         <div>

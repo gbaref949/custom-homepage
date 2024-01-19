@@ -257,13 +257,27 @@ img:nth-of-type(6) {
   left: 95.6%;
 }
 
-.div{
+.menu {
+  width: 90%;
+  max-width: 700px;
+  height: auto;
+  margin: 0 auto;
+  position: fixed;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  overflow-y: auto;
+}
+
+.daiv{
   line-height: 1.5;
   min-height: 100vh;
   font-size: 1.25rem;
+  margin-bottom: 1rem;
 }
 
-body>.div {
+body>.adiv {
   width: 90%;
   max-width: 600px;
   margin-left: auto;
@@ -272,14 +286,14 @@ body>.div {
   margin-bottom: 5rem;
 }
 
-details .div {
+details .adiv {
   border-left: 2px solid #000;
   border-right: 2px solid #000;
   border-bottom: 2px solid #000;
   padding: 1.5em;
 }
 
-details .div{
+details .adiv{
   margin-top: 1.5em;
 }
 
