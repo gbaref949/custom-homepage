@@ -260,13 +260,14 @@ img:nth-of-type(6) {
 .menu {
   width: 90%;
   max-width: 700px;
+  max-height: 400px;
   height: auto;
   margin: 0 auto;
   position: fixed;
   top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: rgb(46, 46, 46);
   overflow-y: auto;
 }
 
@@ -334,7 +335,7 @@ summary:before {
 }
 
 details[open] summary {
-  background-color: #eee;
+  background-color: #7a7a7a;
 }
 
 details[open] summary:before {
@@ -342,5 +343,5 @@ details[open] summary:before {
 }
 
 summary:hover {
-  background-color: #eee;
+  background-color: #7a7a7a;
 }
