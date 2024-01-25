@@ -1,29 +1,63 @@
+import { useEffect } from 'react';
 
 const Other = () => {
+  useEffect(() => {
+    // Load the weather widget script dynamically
+    const script = document.createElement('script');
+    script.id = 'weatherwidget-io-js';
+    script.src = 'https://weatherwidget.io/js/widget.min.js';
+    script.async = true;
+    document.getElementsByTagName('head')[0].appendChild(script);
+
+    return () => {
+      // Cleanup: remove the script when the component unmounts
+      const existingScript = document.getElementById('weatherwidget-io-js');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+  
   return (
-    <div className="adiv menu">
+    <div className='adiv menu'>
       <details open>
-        <summary>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, autem!</summary>
-        <div>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facere, nostrum unde iste beatae rerum reprehenderit hic nihil culpa obcaecati. Ducimus eos illum blanditiis enim tempore dicta veritatis cum facere labore adipisci porro atque iusto voluptatem fugit, nam laborum in unde officiis libero quae eius numquam molestias quos voluptates! Accusamus!
+        <summary>Listen to Music</summary>
+        <div className='music-player'>
+          <iframe
+            title='Spotify Embed: Recommendation Playlist '
+            src={`https://open.spotify.com/embed/playlist/7tOI3aAf4aqFLcH1LZonEh?utm_source=generator&theme=0`}
+            width='100%'
+            height='100%'
+            style={{ minHeight: '360px' }}
+            frameBorder='0'
+            allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+            loading='lazy'
+          />
         </div>
       </details>
       <details>
-        <summary>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, laudantium.</summary>
-        <div>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi accusantium in qui inventore, aliquid eius harum fugiat magni. Tenetur, ipsum. Culpa porro placeat dolor animi maiores in, repellendus quaerat obcaecati laboriosam accusamus dolorem mollitia cupiditate nam modi minima similique debitis ipsam repudiandae ullam consectetur magnam. Illum culpa perspiciatis quae pariatur?
+        <summary>Check the Weather</summary>
+        <div className='weatherwidget-io'>
+          <a
+            className='weatherwidget-io'
+            href='https://forecast7.com/en/33d45n112d07/phoenix/?unit=us'
+            data-label_1='PHOENIX'
+            data-label_2='WEATHER'
+            data-theme='original'
+          >
+            PHOENIX WEATHER
+          </a>
         </div>
       </details>
       <details>
-        <summary>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, voluptatibus!</summary>
-        <div>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla, quo? Harum tempora ipsa ut hic. Aut hic temporibus qui atque, fugiat dolor repudiandae placeat recusandae dicta pariatur officia quisquam, dolore fugit provident dolores excepturi deleniti odio neque totam? Ratione sed illo dolores blanditiis voluptas nesciunt debitis dolore aut cupiditate tempora?
-        </div>
+        <summary>Inspirational Quote</summary>
+        <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
       </details>
       <details>
-        <summary>Lorem ipsum dolor sit, amet consectetur adipisicing.</summary>
+        <summary>Make a To-DO List</summary>
         <div>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex hic facere, neque veniam aspernatur et deserunt eveniet odit, blanditiis architecto in est eum, laudantium reprehenderit! Ipsa nesciunt ducimus, quo quae labore error exercitationem assumenda reiciendis.
+          Ipsa nesciunt ducimus, quo quae labore error exercitationem assumenda
+          reiciendis.
         </div>
       </details>
     </div>
