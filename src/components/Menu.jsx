@@ -1,6 +1,6 @@
 import { useEffect, useState} from 'react';
 
-const Other = () => {
+const Menu = () => {
   const [quote, setQuote] = useState('');
 
   const getRandomQuote = async () => {
@@ -88,4 +88,4 @@ const Other = () => {
   );
 };
 
-export default Other;
+export default Menu;

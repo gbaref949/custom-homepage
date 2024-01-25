@@ -1,11 +1,11 @@
 import Search from './components/Search';
-import Other from './components/Other';
+import Menu from './components/Menu';
 
 function App() {
   return (
     <div className='body'>
       <Search />
-      <Other />
+      <Menu />
     </div>
   );
 }
