@@ -23,6 +23,7 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  overflow-y: auto;
 }
 
 .container{
@@ -85,6 +86,7 @@ img:nth-of-type(6) {
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 9999;
 }
 
 .title {
@@ -260,7 +262,7 @@ img:nth-of-type(6) {
 .menu {
   width: 90%;
   max-width: 700px;
-  max-height: 400px;
+  max-height: 300px;
   height: auto;
   margin: 0 auto;
   position: fixed;
@@ -270,7 +272,7 @@ img:nth-of-type(6) {
   background-color: rgb(46, 46, 46);
   overflow-y: auto;
 }
-
+/* 
 .daiv{
   line-height: 1.5;
   min-height: 100vh;
@@ -345,3 +347,11 @@ details[open] summary:before {
 summary:hover {
   background-color: #7a7a7a;
 }
+
+@media (max-width : 768px){
+  .menu{
+    width: 80%;
+    max-width: none;
+    top: 60%;
+  }
+} */
