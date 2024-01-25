@@ -1,7 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, useState} from 'react';
 
 const Other = () => {
+  const [quote, setQuote] = useState('');
+
+  const getRandomQuote = async () => {
+    try {
+      const response = await fetch(
+        'https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en'
+      );
+      const data = await response.json();
+
+      const formattedQuote = `${data.quoteText} - ${data.quoteAuthor}`;
+      setQuote(formattedQuote);
+    } catch (error) {
+      console.error('Error fetching random quote:', error);
+    }
+  };
+
   useEffect(() => {
+    getRandomQuote();
     // Load the weather widget script dynamically
     const script = document.createElement('script');
     script.id = 'weatherwidget-io-js';
@@ -17,7 +34,7 @@ const Other = () => {
       }
     };
   }, []);
-  
+
   return (
     <div className='adiv menu'>
       <details open>
@@ -51,7 +68,14 @@ const Other = () => {
       </details>
       <details>
         <summary>Inspirational Quote</summary>
-        <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
+        <div>
+          <button className='btn btn-secondary' onClick={getRandomQuote}>
+            Get Random Quote
+          </button>
+          <p id='random_quote' style={{ margin: '25px' }}>
+            {quote}
+          </p>
+        </div>
       </details>
       <details>
         <summary>Make a To-DO List</summary>
