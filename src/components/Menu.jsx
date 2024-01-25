@@ -1,24 +1,25 @@
 import { useEffect, useState} from 'react';
 
 const Menu = () => {
-  const [quote, setQuote] = useState('');
-
-  const getRandomQuote = async () => {
-    try {
-      const response = await fetch(
-        'https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en'
-      );
-      const data = await response.json();
-
-      const formattedQuote = `${data.quoteText} - ${data.quoteAuthor}`;
-      setQuote(formattedQuote);
-    } catch (error) {
-      console.error('Error fetching random quote:', error);
-    }
-  };
+  const [quotes, setQuotes] = useState([]);
+  const url = 'https://api.quotable.io/random';
 
   useEffect(() => {
-    getRandomQuote();
+    fetch(url)
+      .then((response) => {
+        if (response.status >= 200 && response.status <= 300) {
+          return response.json();
+        } else {
+          throw new Error(response.statusText);
+        }
+      })
+      .then((data) => {
+        setQuotes(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     // Load the weather widget script dynamically
     const script = document.createElement('script');
     script.id = 'weatherwidget-io-js';
@@ -69,12 +70,22 @@ const Menu = () => {
       <details>
         <summary>Inspirational Quote</summary>
         <div>
-          <button className='btn btn-secondary' onClick={getRandomQuote}>
-            Get Random Quote
+          <p>"{quotes.content}"</p>
+          <p> -{quotes.author}</p>
+          <button
+            style={{
+              margin: '10rem',
+              height: '50px',
+              width: '80px',
+              textAlign: 'center',
+            }}
+            className='btn'
+            onClick={() => {
+              window.location.reload();
+            }}
+          >
+            Reload Quotes
           </button>
-          <p id='random_quote' style={{ margin: '25px' }}>
-            {quote}
-          </p>
         </div>
       </details>
       <details>
