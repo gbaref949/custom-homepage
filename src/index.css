@@ -272,7 +272,7 @@ img:nth-of-type(6) {
   background-color: rgb(46, 46, 46);
   overflow-y: auto;
 }
-/* 
+
 .daiv{
   line-height: 1.5;
   min-height: 100vh;
@@ -354,4 +354,161 @@ summary:hover {
     max-width: none;
     top: 60%;
   }
-} */
+}
+
+.contain{
+  background: linear-gradient(90deg, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+  height: 100vh;
+}
+
+.todos {
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  top: 90px;
+}
+
+.todos__content {
+  padding: 40px 200px;
+  box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.2);
+  z-index: 999;
+}
+
+.todos__todo {
+  max-height: 45vh;
+  overflow-y: scroll;
+}
+
+.todos__content h2 {
+  text-transform: uppercase;
+  margin: -10px 0 10px 0;
+  color: #fff;
+  text-align: center;
+}
+
+.todos__content .todos__forms {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.todos__input {
+  margin: 1rem;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 6px;
+}
+
+.todos__content .todos__forms .todos__add__btn {
+  border: none;
+  border-radius: 4px;
+  background: rgb(175, 175, 175);
+  color: #112;
+  margin: 0 5px;
+  padding: 0 25px;
+  transition: all 0.1s ease;
+  cursor: pointer;
+}
+
+.todos__content .todos__forms .todos__add__btn:hover {
+  border: none;
+  border-radius: 4px;
+  background: #112;
+  color: rgb(175, 175, 175);
+  margin: 0 3px;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todo__title {
+  text-transform: capitalize;
+  color: #fff;
+  max-width: 30vh;
+  overflow: scroll;
+  margin: 13px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.todo__title::-webkit-scrollbar {
+  display: none;
+}
+
+.todo .todo__buttons {
+  margin: 5px 15px;
+}
+
+.todo .todo__buttons .todo__edit,
+.todo .todo__buttons .todo__delete {
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  padding: 9px 15px;
+  transition: all 0.1s ease;
+  cursor: pointer;
+}
+
+.todo .todo__buttons .todo__edit {
+  background: #00008B;
+  color: #fff;
+}
+
+.todo .todo__buttons .todo__delete {
+  background: rgb(175, 175, 175);
+  color: #112;
+}
+
+.todo .todo__buttons .todo__edit:hover,
+.todo .todo__buttons .todo__delete:hover {
+  border: none;
+  border-radius: 4px;
+  background: #112;
+  color: rgb(175, 175, 175);
+}
+
+/* Media Queries */
+@media (max-width: 800px) {
+  .todos__content {
+    padding: 40px 100px;
+  }
+}
+
+@media (max-width: 590px) {
+  .todos__content {
+    padding: 40px 65px;
+  }
+}
+
+@media (max-width: 560px) {
+  .todos__content {
+    padding: 40px 80px;
+  }
+}
+
+@media (max-width: 560px) {
+  .todos__content {
+    padding: 40px 60px;
+  }
+}
+
+@media (max-width: 430px) {
+  .todo__title {
+    max-width: 5vh;
+  }
+}
+
+@media (max-width: 325px) {
+  .todo .todo__buttons {
+    margin: 5px 10px;
+  }
+
+  .todo .todo__buttons .todo__edit,
+  .todo .todo__buttons .todo__delete {
+    padding: 9px 9px;
+  }
+}
