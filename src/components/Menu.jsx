@@ -181,7 +181,10 @@ function Todo({ todo, dispatch }) {
 }
 
 const Menu = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const [quotes, setQuotes] = useState([]);
+  const apiUrl = 'https://api.quotable.io/random';
   const [todos, dispatch] = useReducer(reducer, [], () => {
     const storedTodos = localStorage.getItem('todos');
     return storedTodos ? JSON.parse(storedTodos) : [];
@@ -193,16 +196,27 @@ const Menu = () => {
   const [dueDate, setDueDate] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-    fetch('https://type.fit/api/quotes')
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data);
-      });
+   const fetchQuote = async () => {
+     try {
+       const response = await fetch(apiUrl);
 
+       if (!response.ok) {
+         throw new Error(`Failed to fetch quote: ${response.statusText}`);
+       }
+
+       const data = await response.json();
+       setQuotes(data);
+     } catch (error) {
+       console.error(error);
+       setIsError(true);
+     } finally {
+       setIsLoading(false);
+     }
+   };
+
+  useEffect(() => {
+    fetchQuote();
+    localStorage.setItem('todos', JSON.stringify(todos));
     // Load the weather widget script dynamically
     const script = document.createElement('script');
     script.id = 'weatherwidget-io-js';
@@ -218,6 +232,28 @@ const Menu = () => {
       }
     };
   }, [todos]);
+
+   const handleReload = () => {
+     setIsLoading(true);
+     setIsError(false);
+     fetchQuote();
+   };
+
+   if (isLoading) {
+     return (
+       <div>
+         <h1>Loading...</h1>
+       </div>
+     );
+   }
+
+   if (isError) {
+     return (
+       <div>
+         <h1>Error fetching quote...</h1>
+       </div>
+     );
+   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -290,19 +326,11 @@ const Menu = () => {
       <details>
         <summary>Inspirational Quote</summary>
         <div>
-          <p>"{quotes.text}"</p>
-          <p> - {quotes.author}</p>
+          <p>"{quotes.content}"</p>
+          <p>- {quotes.author}</p>
           <button
-            style={{
-              margin: '10rem',
-              height: '50px',
-              width: '80px',
-              textAlign: 'center',
-            }}
             className='btn'
-            onClick={() => {
-              window.location.reload();
-            }}
+            onClick={handleReload}
           >
             Reload Quotes
           </button>
