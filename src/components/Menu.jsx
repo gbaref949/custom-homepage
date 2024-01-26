@@ -43,11 +43,11 @@ const Menu = () => {
         <div className='music-player'>
           <iframe
             title='Spotify Embed: Recommendation Playlist '
-            src={`https://open.spotify.com/embed/playlist/7tOI3aAf4aqFLcH1LZonEh?utm_source=generator&theme=0`}
+            src={`https://open.spotify.com/embed/playlist/7tOI3aAf4aqFLcH1LZonEh?utm_source=generator`}
             width='100%'
-            height='100%'
-            style={{ minHeight: '360px' }}
+            height='352'
             frameBorder='0'
+            style={{ borderRadius: '12px', minHeight: '360px' }}
             allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
             loading='lazy'
           />
