@@ -196,23 +196,23 @@ const Menu = () => {
   const [dueDate, setDueDate] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-   const fetchQuote = async () => {
-     try {
-       const response = await fetch(apiUrl);
+  const fetchQuote = async () => {
+    try {
+      const response = await fetch(apiUrl);
 
-       if (!response.ok) {
-         throw new Error(`Failed to fetch quote: ${response.statusText}`);
-       }
+      if (!response.ok) {
+        throw new Error(`Failed to fetch quote: ${response.statusText}`);
+      }
 
-       const data = await response.json();
-       setQuotes(data);
-     } catch (error) {
-       console.error(error);
-       setIsError(true);
-     } finally {
-       setIsLoading(false);
-     }
-   };
+      const data = await response.json();
+      setQuotes(data);
+    } catch (error) {
+      console.error(error);
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     fetchQuote();
@@ -233,27 +233,27 @@ const Menu = () => {
     };
   }, [todos]);
 
-   const handleReload = () => {
-     setIsLoading(true);
-     setIsError(false);
-     fetchQuote();
-   };
+  const handleReload = () => {
+    setIsLoading(true);
+    setIsError(false);
+    fetchQuote();
+  };
 
-   if (isLoading) {
-     return (
-       <div>
-         <h1>Loading...</h1>
-       </div>
-     );
-   }
+  if (isLoading) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 
-   if (isError) {
-     return (
-       <div>
-         <h1>Error fetching quote...</h1>
-       </div>
-     );
-   }
+  if (isError) {
+    return (
+      <div>
+        <h1>Error fetching quote...</h1>
+      </div>
+    );
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -302,7 +302,7 @@ const Menu = () => {
             width='100%'
             height='352'
             frameBorder='0'
-            allowfullscreen=''
+            allowFullScreen=''
             style={{ borderRadius: '12px', minHeight: '360px' }}
             allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
             loading='lazy'
@@ -328,10 +328,7 @@ const Menu = () => {
         <div>
           <p>"{quotes.content}"</p>
           <p>- {quotes.author}</p>
-          <button
-            className='btn'
-            onClick={handleReload}
-          >
+          <button className='btn' onClick={handleReload}>
             Reload Quotes
           </button>
         </div>

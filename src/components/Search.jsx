@@ -98,7 +98,7 @@ const Search = () => {
             <input
               type='text'
               id='searchInput'
-              name='searchInput'
+              name='searchInput' 
               value={searchTerm}
               onChange={handleInputChange}
               className='search-input'
@@ -106,7 +106,7 @@ const Search = () => {
               onKeyPress={(e) => {
                 e.key === 'Enter' && e.preventDefault();
               }}
-              autoComplete='off'
+              autoComplete='off' 
             />
             {searchTerm && searchHistory.length > 0 && (
               <div className='search-history-container'>
