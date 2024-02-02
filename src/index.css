@@ -260,28 +260,6 @@ img:nth-of-type(6) {
   left: 95.6%;
 }
 
-/* .trans-div{
-  width: 90%;
-  max-width: 700px;
-  max-height: 300px;
-  height: auto;
-  margin: 0 auto;
-  position: fixed;
-  top: 75%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  overflow-y: auto;
-  background-color: #ffffff;
-  border: 1px solid black;
-  opacity: 0.6;
-}
-
-div.transbox p {
-  margin: 5%;
-  font-weight: bold;
-  color: #000000;
-} */
-
 .menu {
   width: 90%;
   max-width: 700px;
@@ -293,9 +271,10 @@ div.transbox p {
   left: 50%;
   transform: translate(-50%, -50%);
   overflow-y: auto;
-  background-color: #ffffff;
+  background-color: #3e3d3d;
   border: 1px solid black;
-  opacity: 0.6;
+  margin-top: 2rem;
+  opacity: 0.85;
 }
 
 .daiv{
@@ -354,8 +333,7 @@ summary:before {
   width: 1.75rem;
   height: 1.75rem;
   background-color: #000;
-  color: #FFF;
-  padding: ;
+  color: #353434;
   display: inline-flex;
   justify-content: center;
   align-items: center;

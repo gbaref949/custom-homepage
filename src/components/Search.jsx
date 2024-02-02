@@ -91,7 +91,7 @@ const Search = () => {
         <img src={bckg5} alt='fifth background' className='overlay' />
       </div>
       <div className='search-container'>
-        <h1 className='title'>Georgi Search</h1>
+        <h1 className='title'>Georgi</h1>
         <form onSubmit={handleSearch} className='search-form'>
           <div className='search-input-container'>
             <FaSearch size='2rem' color='#969697' className='search-icon' />
