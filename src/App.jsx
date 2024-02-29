@@ -1,13 +1,11 @@
 // import Search from './components/Search';
 // import Menu from './components/Menu';
-// import Dashboard from './components/Dashboard';
-import Dashboard1 from './components/Dashboard1';
+import Dashboard from './components/Dashboard';
 
 function App() {
   return (
     <div className='body'>
-      {/* <Dashboard/> */}
-      <Dashboard1/>
+      <Dashboard/>
     </div>
   );
 }
