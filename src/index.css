@@ -468,96 +468,95 @@ summary:hover {
   color: rgb(175, 175, 175);
 }
 
-/* Media Queries */
 @media (max-width: 800px) {
-  .todos__content {
-    padding: 40px 5%;
-    /* Updated for consistency and responsiveness */
-  }
+   .todos__content {
+     padding: 40px 5%;
+   }
 
-  .quick-links {
-    bottom: 60px;
-  }
-}
+   .quick-links {
+     bottom: 60px;
+   }
+ }
 
-@media (max-width: 768px) {
-  .search-container {
-    top: 20%;
-  }
+ @media (max-width: 768px) {
+   .search-container {
+     top: 20%;
+   }
 
-  .title {
-    font-size: 5rem;
-    bottom: 2rem;
-  }
+   .title {
+     font-size: 5rem;
+     bottom: 2rem;
+   }
 
-  .quick-links {
-    bottom: 70px;
-  }
+   .quick-links {
+     bottom: 70px;
+   }
 
-  .search-history-container {
-    top: 85%;
-  }
+   .search-history-container {
+     top: 85%;
+   }
 
-  .menu {
-    top: 60%;
-  }
-}
+   .menu {
+     top: 60%;
+   }
+ }
 
-@media (max-width: 590px) {
-  .todos__content {
-    padding: 40px 65px;
-  }
-}
+ @media (max-width: 590px) {
+   .todos__content {
+     padding: 40px 65px;
+   }
+ }
 
-@media (max-width: 560px) {
-  .search-input {
-    width: 100%;
-    max-width: 150%;
-  }
+ @media (max-width: 560px) {
+   .search-input {
+     width: 100%;
+     max-width: 150%;
+   }
 
-  .quick-links {
-    bottom: 30px;
-  }
+   .quick-links {
+     bottom: 30px;
+   }
 
-  .search-button {
-    left: 98%;
-  }
+   .search-button {
+     left: 98%;
+   }
 
-  .search-clear{
-    left: 81.5%
-  }
+   .search-clear {
+     left: 81.5%
+   }
 
-  .clear-history-icon {
-    left: 90.6%;
-  }
+   .clear-history-icon {
+     left: 90.6%;
+   }
 
-  .search-history-item {
-    font-size: small;
-  }
+   .search-history-item {
+     font-size: small;
+   }
 
-  .menu {
-    width: 80%;
-    max-width: none;
-    top: 60%;
-  }
-  .todos__content {
-    padding: 40px 80px;
-  }
-}
+   .menu {
+     width: 80%;
+     max-width: none;
+     top: 60%;
+   }
 
-@media (max-width: 430px) {
-  .todo__title {
-    max-width: 5vh;
-  }
-}
+   .todos__content {
+     padding: 40px 80px;
+   }
+ }
 
-@media (max-width: 325px) {
-  .todo .todo__buttons {
-    margin: 5px 10px;
-  }
+ @media (max-width: 430px) {
+   .todo__title {
+     max-width: 5vh;
+   }
+ }
 
-  .todo .todo__buttons .todo__edit,
-  .todo .todo__buttons .todo__delete {
-    padding: 9px 9px;
-  }
-}
+ @media (max-width: 325px) {
+   .todo .todo__buttons {
+     margin: 5px 10px;
+   }
+
+   .todo .todo__buttons .todo__edit,
+   .todo .todo__buttons .todo__delete {
+     padding: 9px 9px;
+   }
+ } 
