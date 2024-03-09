@@ -3,7 +3,7 @@ import { FaSearch, FaTrash } from 'react-icons/fa'; //import icons from react-ic
 import { CiCircleRemove } from 'react-icons/ci';
 import { BiHistory } from 'react-icons/bi';
 import { MdClear } from 'react-icons/md';
-import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa';
 
 import bckg from '../images/bckg.jpeg';
 import bckg1 from '../images/bckg1.jpeg';
@@ -156,25 +156,25 @@ const Search = () => {
             </button>
             <div className='quick-links'>
               <a
-                href='https://github.com'
+                href='https://github.com/gbaref949'
                 target='_blank'
                 rel='noopener noreferrer'
               >
                 <FaGithub size='2.5rem' color='black' />
               </a>
               <a
-                href='https://linkedin.com'
+                href='https://www.linkedin.com/in/georgibarefield'
                 target='_blank'
                 rel='noopener noreferrer'
               >
                 <FaLinkedin size='2.5rem' color='#3a77cc' />
               </a>
               <a
-                href='https://instagram.com'
+                href='https://www.youtube.com/@georgiB1'
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                <FaInstagram size='2.5rem' color='purple' />
+                <FaYoutube size='2.5rem' color='red' />
               </a>
             </div>
           </div>
