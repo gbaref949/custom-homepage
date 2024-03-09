@@ -180,6 +180,29 @@ function Todo({ todo, dispatch }) {
   );
 }
 
+const Quote = ({ handleReload, isLoading, isError, quotes }) => {
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (isError) {
+    return <h1>Error fetching quote...</h1>;
+  }
+
+  return (
+    <details className='quote-container'>
+      <summary>Inspirational Quote</summary>
+      <div className='quote-content'>
+        <p className='quote-text'>{quotes.content}</p>
+        <p className='quote-author'>- {quotes.author}</p>
+        <button className='reload-btn' onClick={handleReload}>
+          <span>Reload Quotes</span>
+        </button>
+      </div>
+    </details>
+  );
+};
+
 const Menu = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -197,13 +220,13 @@ const Menu = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const fetchQuote = async () => {
+    setIsLoading(true);
+    setIsError(false);
     try {
       const response = await fetch(apiUrl);
-
       if (!response.ok) {
         throw new Error(`Failed to fetch quote: ${response.statusText}`);
       }
-
       const data = await response.json();
       setQuotes(data);
     } catch (error) {
@@ -234,8 +257,6 @@ const Menu = () => {
   }, [todos]);
 
   const handleReload = () => {
-    setIsLoading(true);
-    setIsError(false);
     fetchQuote();
   };
 
@@ -317,22 +338,22 @@ const Menu = () => {
             href='https://forecast7.com/en/33d45n112d07/phoenix/?unit=us'
             data-label_1='PHOENIX'
             data-label_2='WEATHER'
+            data-font='Georgia'
+            data-icons='Climacons Animated'
+            data-mode='Current'
+            data-days='3'
             data-theme='original'
           >
             PHOENIX WEATHER
           </a>
         </div>
       </details>
-      <details>
-        <summary>Inspirational Quote</summary>
-        <div>
-          <p>"{quotes.content}"</p>
-          <p>- {quotes.author}</p>
-          <button className='btn' onClick={handleReload}>
-            Reload Quotes
-          </button>
-        </div>
-      </details>
+      <Quote
+        handleReload={handleReload}
+        isLoading={isLoading}
+        isError={isError}
+        quotes={quotes}
+      />
       <details>
         <summary>Make a To-DO List</summary>
         <div className='todos contain'>
