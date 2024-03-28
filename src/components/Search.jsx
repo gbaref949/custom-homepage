@@ -3,7 +3,7 @@ import { FaSearch, FaTrash } from 'react-icons/fa'; //import icons from react-ic
 import { CiCircleRemove } from 'react-icons/ci';
 import { BiHistory } from 'react-icons/bi';
 import { MdClear } from 'react-icons/md';
-import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
 
 import bckg from '../images/bckg.jpeg';
 import bckg1 from '../images/bckg1.jpeg';
